@@ -130,7 +130,7 @@ Do PUT
     ...    | Log | ${resp.content} |
     ...    | Teardown REST |
     Log    ${body}
-    ${resp}=    Put On Session    alias=${session}    uri=${uri}    data=${body}    headers=${headers}
+    ${resp}=    Put On Session    alias=${session}    url=${uri}    data=${body}    headers=${headers}
     Log    ${resp.content}
     Run Keyword If    '${interruptonfail}' == 'True'    Should Be Equal As Strings    ${resp.status_code}    200    Do PUT: request has failed with status code <${resp.status_code}> and response <${resp.content}>.    False
     RETURN    ${resp}
@@ -163,7 +163,7 @@ Do DELETE
     ...    | Should Be Equal As Strings | ${resp.status_code} | 200 |
     ...    | Log | ${resp.content} |
     ...    | Teardown REST |
-    ${resp}=    Delete On Session    alias=${session}    uri=${uri}    headers=${headers}
+    ${resp}=    Delete On Session    alias=${session}    url=${uri}    headers=${headers}
     Log    ${resp.content}
     Run Keyword If    '${interruptonfail}' == 'True'    Should Be Equal As Strings    ${resp.status_code}    200    Do DELETE: request has failed with status code <${resp.status_code}> and response <${resp.content}>.    False
     RETURN    ${resp}
