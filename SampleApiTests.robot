@@ -59,7 +59,7 @@ Do GET
     ${resp}=    Get Request    alias=${session}    uri=${uri}    headers=${headers}
     Log    ${resp.content}
     Run Keyword If    '${interruptonfail}' == 'True'    Should Be Equal As Strings    ${resp.status_code}    200    Do GET: request has failed with status code <${resp.status_code}> and response <${resp.content}>.    False
-    [Return]    ${resp}
+    [RETURN]    ${resp}
 
 Do POST
     [Arguments]    ${session}    ${uri}    ${body}    ${interruptonfail}=True    ${headers}=${None}
@@ -95,7 +95,7 @@ Do POST
     ${resp}=    Post Request    alias=${session}    uri=${uri}    data=${body}    headers=${headers}
     Log    ${resp.content}
     Run Keyword If    '${interruptonfail}' == 'True'    Should Be Equal As Strings    ${resp.status_code}    200    Do POST: request has failed with status code <${resp.status_code}> and response <${resp.content}>.    False
-    [Return]    ${resp}
+    [RETURN]    ${resp}
 
 Do PUT
     [Arguments]    ${session}    ${uri}    ${body}    ${interruptonfail}=True    ${headers}=${None}
@@ -133,7 +133,7 @@ Do PUT
     ${resp}=    Put Request    alias=${session}    uri=${uri}    data=${body}    headers=${headers}
     Log    ${resp.content}
     Run Keyword If    '${interruptonfail}' == 'True'    Should Be Equal As Strings    ${resp.status_code}    200    Do PUT: request has failed with status code <${resp.status_code}> and response <${resp.content}>.    False
-    [Return]    ${resp}
+    [RETURN]    ${resp}
 
 Do DELETE
     [Arguments]    ${session}    ${uri}    ${interruptonfail}=True    ${headers}=${None}
@@ -166,4 +166,4 @@ Do DELETE
     ${resp}=    Delete Request    alias=${session}    uri=${uri}    headers=${headers}
     Log    ${resp.content}
     Run Keyword If    '${interruptonfail}' == 'True'    Should Be Equal As Strings    ${resp.status_code}    200    Do DELETE: request has failed with status code <${resp.status_code}> and response <${resp.content}>.    False
-    [Return]    ${resp}
+    [RETURN]    ${resp}
