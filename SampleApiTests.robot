@@ -1,27 +1,21 @@
 *** Settings ***
 Documentation     Resource provides keywords to work with REST web services. Implementation is based on RequestsLibrary.
 Library           RequestsLibrary
+Suite Setup       Create Session    PostmanSession    https://postman-echo.com    verify=True
+Suite Teardown    Teardown REST
 
 *** Test Cases ***
 Simple Get
-    Create Session    PostmanSession    https://postman-echo.com    verify=True
     ${resp}=    Do GET    PostmanSession    /get
-    Teardown REST
 
 Simple Post
-    Create Session    PostmanSession    https://postman-echo.com    verify=True
     ${resp}=    Do POST    PostmanSession    /post    {test}
-    Teardown REST
 
 Simple Put
-    Create Session    PostmanSession    https://postman-echo.com    verify=True
     ${resp}=    Do PUT    PostmanSession    /put    {test}
-    Teardown REST
 
 Simple Delete
-    Create Session    PostmanSession    https://postman-echo.com    verify=True
     ${resp}=    Do DELETE    PostmanSession    /delete
-    Teardown REST
 
 *** Keywords ***
 Teardown REST
