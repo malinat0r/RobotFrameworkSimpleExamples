@@ -46,7 +46,7 @@ Do GET
     ...    | Teardown REST |
     ...    If you want to get info and continue the test even if request was unsuccessful (e.g. print response and do manual error handling):
     ...    | Create Session | APISession | https://postman-echo.com |
-    ...    | ${resp}= | Do GET | FUAPISession | /get | False |
+    ...    | ${resp}= | Do GET | APISession | /get | False |
     ...    | Should Be Equal As Strings | ${resp.status_code} | 200 |
     ...    | Log | ${resp.content} |
     ...    | Teardown REST |
@@ -80,7 +80,7 @@ Do POST
     ...    | Log | ${resp.content} |
     ...    | Teardown REST |
     ...    If you want to create new customer and continue the test even if request was unsuccessful (e.g. print response and do manual error handling):
-    ...    | Create Session | FUAPISession | https://postman-echo.com |
+    ...    | Create Session | APISession | https://postman-echo.com |
     ...    | ${resp}= | Do POST | APISession | /post | test message | False |
     ...    | Should Be Equal As Strings | ${resp.status_code} | 200 |
     ...    | Log | ${resp.content} |
